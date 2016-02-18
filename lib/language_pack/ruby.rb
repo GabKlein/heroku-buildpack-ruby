@@ -610,12 +610,12 @@ WARNING
                 pipe("#{bundle_bin} clean", out: "2> /dev/null", user_env: true)
               end
             end
-            
-            @bundler_cache.store
-
-            # Keep gem cache out of the slug
-            FileUtils.rm_rf("#{slug_vendor_base}/cache")
           end
+          
+          @bundler_cache.store
+
+          # Keep gem cache out of the slug
+          FileUtils.rm_rf("#{slug_vendor_base}/cache")
         else
           log "bundle", :status => "failure"
           error_message = "Failed to install gems via Bundler."
