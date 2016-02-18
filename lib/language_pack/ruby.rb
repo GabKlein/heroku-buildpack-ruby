@@ -615,7 +615,7 @@ WARNING
           @bundler_cache.store
 
           # Keep gem cache out of the slug
-          FileUtils.rm_rf("#{slug_vendor_base}/cache")
+          FileUtils.rm_rf("#{slug_vendor_base}/cache") unless ENV["CLEAN_BUNDLE_CACHE"] == 'false'
         else
           log "bundle", :status => "failure"
           error_message = "Failed to install gems via Bundler."
